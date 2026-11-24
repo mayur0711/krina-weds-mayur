@@ -780,6 +780,12 @@ body::before {
 .royale-scroll.is-armed .royale-scroll__window,
 .royale-scroll.is-armed .royale-scroll__roller {
   transform: translateY(calc(-100% + var(--roll-h)));
+  pointer-events: none;
+}
+
+.royale-scroll.is-unrolled .royale-scroll__window,
+.royale-scroll.is-unrolled .royale-scroll__roller {
+  pointer-events: auto;
 }
 
 .royale-scroll.is-armed .royale-scroll__sheet {
@@ -1938,6 +1944,7 @@ body::before {
   --corner-w: min(35%, 240px);
 
   position: relative;
+  z-index: 5;
   display: grid;
   /* One full-width column: left to size itself, it would take the width of
      the title instead, and the cards below would follow it in. */
@@ -2059,6 +2066,7 @@ body::before {
 
 .ryc-card {
   position: relative;
+  z-index: 2;
   width: 100%;
   max-width: 360px;
   margin: 0;
@@ -2251,6 +2259,8 @@ body::before {
 
 /* The venue, date and time are set in Sora, against the name's Fraunces. */
 .ryc-card__foot {
+  position: relative;
+  z-index: 3;
   width: 100%;
   text-align: left;
   font-family: var(--font-sans);
@@ -2274,10 +2284,13 @@ body::before {
    inside it - drawn in a 59px box whose square is 39px of it, so 13.5cqw
    here puts that square at the 9cqw the design has it. */
 .ryc-card__map {
+  position: relative;
+  z-index: 4;
   flex: none;
   display: block;
   width: 50px;
   border-radius: 12%;
+  cursor: pointer;
 }
 
 .ryc-card__map img {
